@@ -1,8 +1,14 @@
 App\Entity\Question:
     properties:
         name:
-            - NotBlank: ~
+            - NotBlank: 
+            message: "Hiba! Kérjük töltsd ki az
+összes mezőt!"
         email:
-            - NotBlank: ~
+            - NotBlank: 
+            message: "Hiba! Kérjük töltsd ki az
+összes mezőt!"
         message:
-            - NotBlank: ~
+            - NotBlank: 
+            message: "Hiba! Kérjük töltsd ki az
+összes mezőt!"
