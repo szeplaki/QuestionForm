@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType; 
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -18,8 +19,8 @@ class QuestionType extends AbstractType
         $builder
             ->add('name', TextType::class, ['label' => 'Neved',
             'row_attr' => [
-                'class' => 'input-group-text',
-            ],])
+                'class' => 'input-group-text row d-flex justify-content-center',
+            ],],)
 
             ->add('email', EmailType::class, [
                 'label' => 'E-mail címed',
@@ -28,9 +29,9 @@ class QuestionType extends AbstractType
                 ],
             ])
 
-            ->add('message', TextType::class, ['label' => 'Üzenet szövege',
+            ->add('message', TextareaType::class, ['label' => 'Üzenet szövege',
             'row_attr' => [
-                'class' => 'input-group',
+                'class' => 'input-group'
             ],])
             ->add('save', SubmitType::class, ['label' => 'Küldés',
             'row_attr' => [

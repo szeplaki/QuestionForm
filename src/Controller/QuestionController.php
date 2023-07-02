@@ -2,9 +2,12 @@
 
 namespace App\Controller;
 
-use Symfony\Component\OptionsResolver\OptionsResolver;
+// use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Entity\Question;
+use App\Entity\Message;
+// use App\Controller\MessageController;
 use App\Form\Type\QuestionType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -16,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class QuestionController extends AbstractController {
 
     #[Route('/question/new')]
-    public function new(Request $request): Response
+    public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $question = new Question();
 
@@ -24,7 +27,7 @@ class QuestionController extends AbstractController {
             ->add('name', TextType::class)
             ->add('email', EmailType::class)
             ->add('message', TextType::class)
-            ->add('save', SubmitType::class, ['label' => 'Send Question'])
+            ->add('save', SubmitType::class)
             ->getForm();
 
         $form = $this->createForm(QuestionType::class, $question);
@@ -32,14 +35,21 @@ class QuestionController extends AbstractController {
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $question = $form->getData();
+            $message = new Message();
+            $message->setName($form["name"]->getData());
+            $message->setEmail($form["email"]->getData());
+            $message->setQuestion($form["message"]->getData());
+            $entityManager->persist($message);
+            $entityManager->flush();
 
-            // ... perform some action, such as saving the task to the database
-
-            return $this->redirectToRoute('question_success');
+            return $this->render('question/success.html.twig', [
+                new Response("Köszönjük szépen a kérdésedet.
+                Válaszunkkal hamarosan keresünk a megadott e-mail címen.")
+            ]);
         }
 
         return $this->render('question/new.html.twig', [
-            'form' => $form,
+            'form' => $form
         ]);
     }
 }

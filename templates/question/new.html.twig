@@ -1,1 +1,25 @@
-{{ form(form) }}
+<html>
+<head>
+    <title>New Question</title>
+</head>
+<body>
+<div class="justify-content-center">
+<form action="/question/new" method="post">
+    {{ form_start(form) }}
+
+    <div class="row">
+        <div class="col">
+            {{ form_row(form.name) }}
+        </div>
+        <div class="col">
+            {{ form_row(form.email) }}
+        </div>
+        <div class="col">
+            {{ form_row(form.message) }}
+        </div>
+    </div>
+{{ form_end(form) }}
+</form>
+</div>
+</body>
+</html>
