@@ -1,9 +1,8 @@
-<html>
-<head>
-    <title>New Question</title>
-</head>
-<body>
-<div class="justify-content-center">
+{% extends 'base.html.twig' %}
+
+{% block title %}New Question{% endblock %}
+{% block body %}
+    <div style="text-align:right">
 <form action="/question/new" method="post" novalidate>
     {{ form_start(form) }}
 
@@ -21,5 +20,4 @@
 {{ form_end(form) }}
 </form>
 </div>
-</body>
-</html>
+{% endblock %}
