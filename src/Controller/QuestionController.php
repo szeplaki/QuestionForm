@@ -2,10 +2,8 @@
 
 namespace App\Controller;
 
-// use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Entity\Question;
 use App\Entity\Message;
-// use App\Controller\MessageController;
 use App\Form\Type\QuestionType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -42,10 +40,7 @@ class QuestionController extends AbstractController {
             $entityManager->persist($message);
             $entityManager->flush();
 
-            return $this->render('question/success.html.twig', [
-                new Response("Köszönjük szépen a kérdésedet.
-                Válaszunkkal hamarosan keresünk a megadott e-mail címen.")
-            ]);
+            return $this->render('question/success.html.twig');
         }
 
         return $this->render('question/new.html.twig', [
