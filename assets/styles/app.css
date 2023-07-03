@@ -1,3 +1,16 @@
 body {
-    background-color: red;
+    background-color: #7683c2;
+}
+label {
+    color: #0047ab;
+}
+form {
+    text-align: right;
+}
+button, input, textarea {
+    border-radius: 5px;
+    background-color: #D5F3FE;
+}
+button {
+    color: #0047ab;
 }

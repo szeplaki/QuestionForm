@@ -17,26 +17,14 @@ class QuestionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', TextType::class, ['label' => 'Neved',
-            'row_attr' => [
-                'class' => 'input-group-text row d-flex justify-content-center',
-            ],],)
+            ->add('name', TextType::class, ['label' => 'Neved'])
 
             ->add('email', EmailType::class, [
-                'label' => 'E-mail címed',
-                'row_attr' => [
-                    'class' => 'input-group',
-                ],
+                'label' => 'E-mail címed'
             ])
 
-            ->add('message', TextareaType::class, ['label' => 'Üzenet szövege',
-            'row_attr' => [
-                'class' => 'input-group'
-            ],])
-            ->add('save', SubmitType::class, ['label' => 'Küldés',
-            'row_attr' => [
-                'class' => 'input-group',
-            ],])
+            ->add('message', TextareaType::class, ['label' => 'Üzenet szövege'])
+            ->add('save', SubmitType::class, ['label' => 'Küldés'])
         ;
     }
     public function configureOptions(OptionsResolver $resolver): void

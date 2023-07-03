@@ -2,22 +2,13 @@
 
 {% block title %}New Question{% endblock %}
 {% block body %}
-    <div style="text-align:right">
 <form action="/question/new" method="post" novalidate>
     {{ form_start(form) }}
-
-    <div class="row">
-        <div class="col">
             {{ form_row(form.name) }}
-        </div>
-        <div class="col">
+            <br>
             {{ form_row(form.email) }}
-        </div>
-        <div class="col">
+            <br>
             {{ form_row(form.message) }}
-        </div>
-    </div>
 {{ form_end(form) }}
 </form>
-</div>
 {% endblock %}
